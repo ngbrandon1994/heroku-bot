@@ -19,12 +19,10 @@ client.timer;
 //it will automatically run, once program starts.
 var runDaily = function () {
   client.timer = setTimeout(daily, 2000);
+  //Notifies owner bot just started up/restarted
+  client.sendOwnerMsg("Bot is now online!");
 };
 runDaily();
-
-client.daily = () =>{
-  daily();
-}
 
 //ensure at reset, the date are updated so, spotlight is accurate to game.
 function daily(){
