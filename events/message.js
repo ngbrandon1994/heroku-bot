@@ -7,32 +7,36 @@ module.exports = (client, message) => {
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
 
-  //List of replies to certain phase(s) or word(s) stated by a user.
+  //get the msg content and set to lowercase so it will work for the array
   var msg = message.content;
-  // Grab the settings for this server from the PersistentCollection
-  // If there is no guild, get default conf (DMs)
-  let settings = client.config.defaultSettings;
-
-  message.settings = settings;
-
-
-  msg = msg.toLowerCase;
-  const saying =  {
+  msg = msg.toLowerCase();
+  //List of replies to certain phrase(s) or word(s) stated by a user.
+  const phrasesToRespondTo =  {
     "ayy": "Ayy, lmao!",
     "wat": "Say what?",
     "good game": "gg",
+    "gg": "gg",
+    "who?": "The Master",
     "legit": "Seems legit"
   };
 
-  //If you want to see if someone spamming your bot can cause lagg if doing something with it.
+  // Grab the settings for this server from the PersistentCollection
+  // If there is no guild, get default conf (DMs)
+  let settings = client.config.defaultSettings;
+  message.settings = settings;
+
+  //If you want to see if someone spamming your bots' DM
   //not really checking or doing anything with it, just logging it
   if(message.channel.type === 'dm' && message.author.id != client.config.ownerID){
     console.log("[DM] from "+message.author+":\n"+message.content);
   }
-  //reply to user if they say something listed in the saying array.
-  //personal preferences
-  if(message.channel.type != 'dm' && saying[msg]){
-    message.channel.send(saying[msg])
+  /**
+   * Reply to user if they say something based off phrasesToRespondTo array
+   * Only respond if messages was sent in a server and not DM.
+   * All replies are personal preferences; feel free to change them
+  */
+  if(message.channel.type != 'dm' && phrasesToRespondTo[msg]){
+    message.channel.send(phrasesToRespondTo[msg])
   }
   /**
    * Fun responses for when a user mentions the bot 
@@ -42,7 +46,7 @@ module.exports = (client, message) => {
    */
   let mention = message.mentions.users.first();
   if(mention){
-    if(mention.id === client.config.botID && message.content.indexOf(client.config.prefix) !== 0){
+    if(mention.id === client.user.id && message.content.indexOf(client.config.prefix) !== 0){
       const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
       let rdm = Math.floor(Math.random() * myArray.length);
       message.reply(myArray[rdm]);
