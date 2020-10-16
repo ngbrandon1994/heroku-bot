@@ -9,6 +9,15 @@ module.exports = (client, message) => {
 
   //List of replies to certain phase(s) or word(s) stated by a user.
   var msg = message.content;
+  // Grab the settings for this server from the PersistentCollection
+  // If there is no guild, get default conf (DMs)
+  let settings = message.guild
+     ? client.settings.get(message.guild.id)
+     : client.config.defaultSettings;
+
+  message.settings = settings;
+
+
   msg = msg.toLowerCase;
   const saying =  {
     "ayy": "Ayy, lmao!",
