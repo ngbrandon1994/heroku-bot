@@ -34,7 +34,7 @@ module.exports = (client, message) => {
    * message.content.match(regex) -> if true can set cmd = help 
    */
   let mention = message.mentions.users.first();
-  if(!mention){
+  if(mention){
     if(mention.id === client.config.botID && message.content.indexOf(client.config.prefix) !== 0){
       const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
       let rdm = Math.floor(Math.random() * myArray.length);
