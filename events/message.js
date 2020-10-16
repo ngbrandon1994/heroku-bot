@@ -7,16 +7,6 @@ module.exports = (client, message) => {
   // and not get into a spam loop (we call that "botception").
   if (message.author.bot) return;
 
-  // Grab the settings for this server from the PersistentCollection
-  // If there is no guild, get default conf (DMs)
-  const settings = message.guild
-    ? client.settings.get(message.guild.id)
-    : client.config.defaultSettings;
-
-  // For ease of use in commands and functions, we'll attach the settings
-  // to the message object, so `message.settings` is accessible.
-  message.settings = settings;
-
   //List of replies to certain phase(s) or word(s) stated by a user.
   const msg = message.content;
   msg = msg.toLowerCase;
