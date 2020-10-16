@@ -26,8 +26,8 @@ module.exports = (client, message) => {
 
   //If you want to see if someone spamming your bot can cause lagg if doing something with it.
   //not really checking or doing anything with it, just logging it
-  if(message.channel.type === 'dm' && message.author.id !== client.config.ownerID){
-    console.log("[DM] from "+message.author+":\n\n"+message.content);
+  if(message.channel.type === 'dm' && message.author.id != client.config.ownerID){
+    console.log("[DM] from "+message.author+":\n"+message.content);
   }
   //reply to user if they say something listed in the saying array.
   //personal preferences
@@ -60,7 +60,7 @@ module.exports = (client, message) => {
 
   // Get the user or member's permission level from the elevation
   const level = client.permlevel(message);
-
+  console.log(level);
   // Check whether the command, or alias, exist in the collections defined
   // in index.js.
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
