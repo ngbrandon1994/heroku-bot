@@ -15,7 +15,6 @@ A discord js bot is a back-up bot, I made for fun for my server that is being us
 - [x] Use alias for commands instead of the command file name to run the command
 
 ## Bot in Action:
-=======
 If you are interested in seeing my bot in action, you are welcome to join my server. Link will be provided in near future [**PlaceHolder**](https://github.com/ngbrandon1994/heroku-bot)
 
 ## How to run and test this bot?
@@ -29,7 +28,7 @@ You can run the bot using command line with one of the two commands listed:
 * Node index.js
 * pm2 start index.js
 
-*Recommended to use pm2 if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
+*Recommended to use pm2 start if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
 
 ## Bugs / Support / Suggestions
 
