@@ -10,7 +10,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['sg', 'setactivity'],
-  permLevel: 10
+  permLevel: 9
 };
 
 exports.help = {
