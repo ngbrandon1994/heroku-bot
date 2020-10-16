@@ -6,7 +6,7 @@ exports.run = async (client, message, args, level) => {
     cw=cw+` days`;
   }
 
-  var embed = new Discord.RichEmbed()
+  var embed = new Discord.MessageEmbed()
     .setTimestamp()
     .setAuthor(`${message.author.username}#${message.author.discriminator}`, `${message.author.displayAvatarURL}`)
     .addField(`Castle Wars Spotlight in ${cw}`,`${client.nextCWSLDate}`)

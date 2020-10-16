@@ -11,7 +11,7 @@ exports.run = async (client, message, args, level) => {
   message.guild.member(user).kick(reason);
   message.delete();
 
-  const embed = new Discord.RichEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor(0x00AE86)
     .setTimestamp()
     .setAuthor(`${message.author.username}#${message.author.discriminator}`,`${message.author.displayAvatarURL}`)

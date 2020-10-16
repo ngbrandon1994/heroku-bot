@@ -11,9 +11,7 @@ module.exports = (client, message) => {
   var msg = message.content;
   // Grab the settings for this server from the PersistentCollection
   // If there is no guild, get default conf (DMs)
-  let settings = message.guild
-     ? client.settings.get(message.guild.id)
-     : client.config.defaultSettings;
+  let settings = client.config.defaultSettings;
 
   message.settings = settings;
 
@@ -28,7 +26,7 @@ module.exports = (client, message) => {
 
   //If you want to see if someone spamming your bot can cause lagg if doing something with it.
   //not really checking or doing anything with it, just logging it
-  if(message.channel.type === 'dm' && message.author.id != client.config.ownerID){
+  if(message.channel.type === 'dm' && message.author.id !== client.config.ownerID){
     console.log("[DM] from "+message.author+":\n\n"+message.content);
   }
   //reply to user if they say something listed in the saying array.
@@ -83,7 +81,7 @@ module.exports = (client, message) => {
      * (Any users who isn't the bot owner runs bot owner cmds, won't see permission deny message, they will set to believe the commands doesn't exist)
      */
     if (settings.systemNotice === "true" && cmd.conf.permLevel < 10) {
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
       .setColor(0x00AE86)
       .setTimestamp()
       .setTitle(`Permission Denied!`)

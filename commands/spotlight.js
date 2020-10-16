@@ -10,7 +10,7 @@ exports.run = async (client, message, args, level) => {
     cw=cw+` days`;
   }
 
-  var embed = new Discord.RichEmbed()
+  var embed = new Discord.MessageEmbed()
     .addField(`Current Spotight:`,client.currentSL)
     .addField(`Next Spotight in ${client.timeToNextSL} days is:`,client.nextSL);
 
