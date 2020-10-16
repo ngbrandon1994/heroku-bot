@@ -27,12 +27,19 @@ module.exports = (client, message) => {
   if(message.channel.type != 'dm' && saying[msg]){
     message.channel.send(saying[msg])
   }
-  //Assuming you are not using @bot as one of the prefixes and as a command to if someone want to @bot to get the list of coammands otherwise you can remove the next 6 lines of code.
-  const regex = new RegExp(`^(<@!?${client.user.id}>)`);
-  if(message.mentions.users.first().id === client.config.botID && message.content.match(regex)){
-    const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
-  	let rdm = Math.floor(Math.random() * myArray.length);
-  	message.reply(myArray[rdm]);
+  /**
+   * Fun responses for when a user mentions the bot 
+   * --This is assuming if you aren't using if mentioning the bot then respond with list of commands, otherwise you can remove the next 8 lines of code after the comments and use the commented sudo codes.
+   * const regex = new RegExp(`^(<@!?${client.user.id}>)`);
+   * message.content.match(regex) -> if true can set cmd = help 
+   */
+  let mention = message.mentions.users.first();
+  if(!mention){
+    if(mention.id === client.config.botID && message.content.indexOf(client.config.prefix) !== 0){
+      const myArray = ['I am a bot, How can I bot you away','Annoy someone else','Shoo!','Grrr!'];
+      let rdm = Math.floor(Math.random() * myArray.length);
+      message.reply(myArray[rdm]);
+    }
   }
 
   if (message.content.indexOf(client.config.prefix) !== 0) return;
@@ -60,10 +67,28 @@ module.exports = (client, message) => {
     return message.channel.send("This command is unavailable via private message. Please run this command in a guild.");
 
   if (level < client.levelCache[cmd.conf.permLevel]) {
-    if (settings.systemNotice === "true") {
-      return message.channel.send(`You do not have permission to use this command.
-  Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name})
-  This command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
+    /**
+     * cmd.conf.permLevel < 10
+     * disable bot owner cmd to be noticeable by other users who isn't the bot owner. 
+     * This ensure any high end commands that shouldn't be touched won't be unless their the bot owner 
+     * (Any users who isn't the bot owner runs bot owner cmds, won't see permission deny message, they will set to believe the commands doesn't exist)
+     */
+    if (settings.systemNotice === "true" && cmd.conf.permLevel < 10) {
+      const embed = new Discord.RichEmbed()
+      .setColor(0x00AE86)
+      .setTimestamp()
+      .setTitle(`Permission Denied!`)
+      .setDescription(`You do not have permission to use this command.
+    Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name}. \nThis command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
+      try{
+        return message.channel.send({embed});
+      }catch(e){
+        console.log(e);
+        return message.channel.send(`You do not have permission to use this command.
+        Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name})
+        This command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
+      }
+
     } else {
       return;
     }
