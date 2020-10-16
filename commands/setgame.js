@@ -10,7 +10,7 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['sg', 'setactivity'],
-  permLevel: 9
+  permLevel: "Bot Admin"
 };
 
 exports.help = {
