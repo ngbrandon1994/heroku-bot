@@ -8,7 +8,7 @@ module.exports = (client, message) => {
   if (message.author.bot) return;
 
   //List of replies to certain phase(s) or word(s) stated by a user.
-  const msg = message.content;
+  var msg = message.content;
   msg = msg.toLowerCase;
   const saying =  {
     "ayy": "Ayy, lmao!",
