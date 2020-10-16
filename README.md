@@ -1,37 +1,36 @@
-# Discord-Bot
-A discord js bot I did for fun for my server that I run with my friends.
+# Heroku Discord Bot
+A discord js bot is a back-up bot, I made for fun for my server that is being used among friends. This bot is coded using JavaScript with discord.js library and node.js platform and is using heroku as the host server. As it is being hosted on heroku it will run 24/7 but only for 23 days a month. 
 
-<<<<<<< Updated upstream
-This bot is coded using discord.js which is Node.js and using heroku as its hosted server.
-
-If you are interested in seeing my bot in action, you are welcome to join my server,
+If you are interested in seeing my bot in action, you are welcome to join my server
 =======
-This bot is coded using discord.js which apart of Node.js and using heroku as its host server.
 
 If you are interested in seeing my bot in action, you are welcome to join my server,
-[**Link will be provided in near future**](https://github.com/ngbrandon1994/discord-bot)
+[**Link will be provided in near future**](https://github.com/ngbrandon1994/heroku-bot)
 
-# What is this Discord-bot project about?
+# What is this project about?
 
- This project is about me learning a how to code and host a bot and running 24/7 for groups of friends on my discord. This bot specifically will run for 23 days a month since it is hosted on heroku.  
-This bot is intended as a backup bot incase my main server bot crashed and failed to restart despite using `pm2 start index.js`.
-My main bot is called Doctor, while this bot is called Master. This bot will be running similar commands if not the same commands, mostly borderline commands that doesn't impact on the hosting server.
+ This project is about me learning a how to code and hosting on heroku and running 24/7 for groups of friends on my discord. This bot is intended as a backup bot incase my main server bot crashed and failed to restart despite using `pm2 start index.js`. My main bot is called Doctor, while this bot is called Master. This bot will be running similar commands if not the same commands, mostly borderline commands that doesn't impact on the hosting server.
 
 
-# What is the goal of this Discord-Bot project?
+# What are some goal of this project?
 
-- [x] Developing a working discord bot for anyone to use as a bot for their servers
-- [x] Learn a how to code a discord bot
+- [x] Developing a working generic discord bot for anyone to use
+- [x] Learn how to code a discord bot
 - [ ] Added in commands to look up data online
 - [x] Use alias for commands instead of the command file name to run the command
 
 # How to run and test this bot?
 
-Remove process.eniv from config.js file:
-* process.eniv.ownerID = your own user ID
-* process.eniv.token = your bot token
+Remove process.env from config.js file:
+* process.env.ownerID = your own discord user ID
+* process.env.token = your bot token
+* process.env.serverLink = your own discord server invite link
 
-A full guide coming soon...
+You can run the bot using command line with one of the two commands listed:
+* Node index.js
+* pm2 start index.js
+
+*Recommended to use pm2 if you want the bot to run 24/7, and restart if it crashes or encounters a bug. Also able to restarts upon using the restart command*
 
 # Bugs / Support / Suggestions
 
@@ -39,7 +38,7 @@ If you find a problem with the bot, please file an issue.
 
 Please also state how the issue can be reproduced and the expected and unexpected behavior of the bot. If any screenshots please feel free to show it, so the issue can be solved as quickly as possible.
 
-[Report an Issue](https://github.com/ngbrandon1994/discord-bot/issues/new)
+[Report an Issue](https://github.com/ngbrandon1994/heroku-bot/issues/new)
 
 # Credits:
 - Starting foundation of this bot is based off [An-Idiots-Guide](https://github.com/An-Idiots-Guide/guidebot)
