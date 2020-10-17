@@ -3,6 +3,7 @@ const config = {
   "admins": process.env.ownerID,
   "support": process.env.ownerID,
   "serverLink": process.env.serverLink,
+  "botID": process.env.botID,
   "prefix": "~",
 
   "defaultSettings" : {

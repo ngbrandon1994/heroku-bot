@@ -33,8 +33,7 @@ module.exports = (client) => {
 
   Logs to console. Future patches may include time+colors
   */
-  client.log = (type, msg, title) => {
-    if (!title) title = "Log";
+  client.log = (type, msg, title = "log") => {
     console.log(`[${type}] [${title}]${msg}`);
   };
 
@@ -70,6 +69,22 @@ module.exports = (client) => {
     const owner = await client.users.get(client.config.ownerID);
 		return owner.send(msg);
   };
+
+  /**
+   * This bot is considered a back-up bot, and certain commands/event functions only run if the main bot is offline.
+   */
+  client.isBotOffline = async () =>{
+    const bot = await client.users.get(client.config.botID);
+    const status = await bot.presence.status;
+
+    if(status === "offline"){
+      return true;
+    } else {
+      return false;
+    }
+
+    return status;
+  }
 
 
   /*
