@@ -36,17 +36,18 @@ function daily(){
 };
 
 /**
- * If you are using one bot then client.isBotOffline function is only required, you can delete timedCheckBotsOffline() function and client.config.myBotsID variable and replace line 45 with client.isBotOffline();
- * 1 hour = 3600000 ms
- * 4 hr = 14400000 ms
- * 12 hr = 43200000 ms
- * you can copy / paste the ms to replace 4hr if you prefer a 1 or 12hr checks or another time of your preference.
+ * If you are using one bot then client.isBotOffline function is only required, you can delete timedCheckBotsOffline() function and client.config.myBotsID variable and replace line 47 with client.isBotOffline();
+ * 3600000 is the time in milliseconds for an hr
+ * times X for >1hours or divide by X to run the function in mins or secs
+ * It is optimal to run it hours so you don't want to use too many of the server resources. 
+ * You should not be running this function in a time frame of minutes or seconds, if your bot crashes frequently then you shouldn't be using the function below as it will be spamming the bot owner DMs
+ * Recommended times are 1 hour, 4 hr, 6hr, 12hr or 30 mins (if a must)
  */
-var everyFourHr = function () {
+var botStatusCheck = function () {
   client.timedCheckBotsOffline();
-  setTimeout(everyFourHr,14400000);
+  setTimeout(botStatusCheck,3600000*6);
 }
-everyFourHr();
+botStatusCheck();
 
 const init = async () => {
 
