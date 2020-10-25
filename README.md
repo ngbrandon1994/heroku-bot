@@ -38,5 +38,3 @@ Please also state how the issue can be reproduced and the expected and unexpecte
 
 [Report an Issue](https://github.com/ngbrandon1994/heroku-bot/issues/new)
 
-## Credits:
-- Starting foundation of this bot is based off [An-Idiots-Guide](https://github.com/An-Idiots-Guide/guidebot)
