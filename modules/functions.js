@@ -82,10 +82,31 @@ module.exports = (client) => {
     } else {
       return false;
     }
-
-    return status;
   }
 
+  /**
+   * This check on a daily timed run function to see if my bots is offline
+   * As I have multiple bots I will need this function.
+   */
+  client.timedCheckBotsOffline = async () =>{
+    const length = client.config.myBotsID.length();
+
+    /** 
+     * for my function there is no need to check but it doesn't hurt 
+     * As this secures your bot and ensure it won't crash
+     */
+    if(length < 1) return;
+
+    for(var i = 0; i<length;i++){
+      let bots = await client.users.get(client.config.myBotsID[i]);
+      let status = await bots.presence.status;
+
+      if(status === "offline"){
+        client.sendOwnerMsg('<@'+client.config.myBotsID[i]+'>, is offline!')
+      }
+    }
+    return;
+  }
 
   /*
   * Return time in ms from subtracting the current time from midnight.

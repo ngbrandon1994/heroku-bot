@@ -35,6 +35,18 @@ function daily(){
   client.timer = setTimeout(daily, timeToMidnight);
 };
 
+/**
+ * If you are using one bot then client.isBotOffline function is only required, you can delete timedCheckBotsOffline() function and client.config.myBotsID variable and replace line 45 with client.isBotOffline();
+ * 1 hour = 3600000 ms
+ * 4 hr = 14400000 ms
+ * 12 hr = 43200000 ms
+ * you can copy / paste the ms to replace 4hr if you prefer a 1 or 12hr checks or another time of your preference.
+ */
+var everyFourHr = function () {
+  client.timedCheckBotsOffline();
+  setTimeout(everyFourHr,14400000);
+}
+everyFourHr();
 
 const init = async () => {
 

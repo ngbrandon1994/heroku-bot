@@ -4,6 +4,7 @@ const config = {
   "support": process.env.ownerID,
   "serverLink": process.env.serverLink,
   "botID": process.env.botID,
+  "myBotsID": process.env.myBotsID,
   "prefix": "~",
 
   "defaultSettings" : {
@@ -22,7 +23,7 @@ const config = {
   // PERMISSION LEVEL DEFINITIONS.
   // 1-4 are skipped to leave room for further permission levels to add by bot owner/script editors
   permLevels: [
-    // This is the lowest permisison level, this is for non-roled users.
+    // This is the lowest permission level, this is for no role users.
     { level: 0,
       name: "User",
       check: () => true
