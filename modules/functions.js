@@ -89,7 +89,7 @@ module.exports = (client) => {
    * As I have multiple bots I will need this function.
    */
   client.timedCheckBotsOffline = async () =>{
-    const length = client.config.myBotsID.length();
+    const length = client.config.myBotsID.length;
 
     /** 
      * for my function there is no need to check but it doesn't hurt 
