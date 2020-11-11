@@ -89,7 +89,9 @@ module.exports = (client) => {
    * As I have multiple bots I will need this function.
    */
   client.timedCheckBotsOffline = async () =>{
-    const length = client.config.myBotsID.length;
+    var botIDs = client.config.myBotsID;
+    var botIDArray = botIDs.split(',');
+    const length = client.config.botIDArray.length;
 
     /** 
      * for my function there is no need to check but it doesn't hurt 
@@ -98,9 +100,7 @@ module.exports = (client) => {
     if(length < 1) return;
 
     for(var i = 0; i<length;i++){
-      var botID = client.config.myBotsID[i];
-      console.log(botID);
-      let bots = await client.users.get(botID);
+      let bots = await client.users.get(botIDArray[i]);
       let status = await bots.presence.status;
 
       if(status === "offline"){
