@@ -92,6 +92,7 @@ module.exports = (client) => {
     var botIDs = client.config.myBotsID;
     var botIDArray = botIDs.split(',');
     const length = client.config.botIDArray.length;
+    console.log(botIDArray);
 
     /** 
      * for my function there is no need to check but it doesn't hurt 
@@ -101,6 +102,7 @@ module.exports = (client) => {
 
     for(var i = 0; i<length;i++){
       let bots = await client.users.get(botIDArray[i]);
+      console.log('bot id array '+botIDArray[i]);
       let status = await bots.presence.status;
 
       if(status === "offline"){
