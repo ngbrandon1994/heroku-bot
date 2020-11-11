@@ -18,9 +18,11 @@ const moment = require('moment');
 client.timer;
 //it will automatically run, once program starts.
 var runDaily = function () {
-  client.timer = setTimeout(daily, 2000);
-  //Notifies owner bot just started up/restarted
-  client.sendOwnerMsg("Bot is now online!");
+  client.timer = setTimeout(()=>{
+    daily();
+    //Notifies owner bot just started up/restarted
+    client.sendOwnerMsg("Bot is now online!");
+  }, 2000);
 };
 runDaily();
 
