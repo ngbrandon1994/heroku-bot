@@ -91,8 +91,8 @@ module.exports = (client) => {
   client.timedCheckBotsOffline = async () =>{
     var botIDs = client.config.myBotsID;
     var botIDArray = botIDs.split(',');
-    const length = client.config.botIDArray.length;
     console.log(botIDArray);
+    const length = botIDArray.length;
 
     /** 
      * for my function there is no need to check but it doesn't hurt 
