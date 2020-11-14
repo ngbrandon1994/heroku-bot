@@ -66,7 +66,7 @@ module.exports = (client) => {
  * We using async and await incase, bot just started up and it will take time to collect all the users in the server(s) then find the owner.
  */
   client.sendOwnerMsg = async (msg) =>{
-    const owner = await client.users.get(client.config.ownerID);
+    const owner = await client.users.cache.get(client.config.ownerID);
 		return owner.send(msg);
   };
 
@@ -74,7 +74,7 @@ module.exports = (client) => {
    * This bot is considered a back-up bot, and certain commands/event functions only run if the main bot is offline.
    */
   client.isBotOffline = async () =>{
-    const bot = await client.users.get(client.config.botID);
+    const bot = await client.users.cache.get(client.config.botID);
     const status = await bot.presence.status;
 
     if(status === "offline"){
@@ -101,7 +101,7 @@ module.exports = (client) => {
     if(length < 1) return;
 
     for(var i = 0; i<length;i++){
-      let bots = await client.users.get(botIDArray[i]);
+      let bots = await client.users.cache.get(botIDArray[i]);
       console.log('bot id array '+botIDArray[i]);
       let status = await bots.presence.status;
 
