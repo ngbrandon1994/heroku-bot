@@ -9,7 +9,7 @@ exports.run = (client, message, args) => {
     .setTitle(`About Me`)
     .setDescription(`I am a bot created for my personal server!`)
     .setAuthor(`${pack.name} v${pack.version}`)
-    .addField(`Developer:`,`${client.users.get(client.config.ownerID)}`)
+    .addField(`Developer:`,`${client.users.cache.get(client.config.ownerID)}`)
     .addField(`Library:`,`Discord.js v${version}\nNode ${process.version}`,true)
     .addField(`My Server:`,client.config.serverLink,true);
 

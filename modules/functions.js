@@ -91,7 +91,7 @@ module.exports = (client) => {
   client.timedCheckBotsOffline = async () =>{
     var botIDs = client.config.myBotsID;
     var botIDArray = botIDs.split(',');
-    console.log(botIDArray);
+    console.log(botIDArray[0]);
     const length = botIDArray.length;
 
     /** 
@@ -106,7 +106,7 @@ module.exports = (client) => {
       let status = await bots.presence.status;
 
       if(status === "offline"){
-        client.sendOwnerMsg('<@'+client.config.myBotsID[i]+'>, is offline!')
+        client.sendOwnerMsg('<@'+botIDArray[i]+'>, is offline!')
       }
     }
     return;
