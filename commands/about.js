@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 exports.run = (client, message, args) => {
   const embed = new Discord.MessageEmbed()
     .setColor(0x800000)
-    .setThumbnail(`${client.user.avatarURL}`)
+    .setThumbnail(`${client.user.avatarURL()}`)
     .setTitle(`About Me`)
     .setDescription(`I am a bot created for my personal server!`)
     .setAuthor(`${pack.name} v${pack.version}`)

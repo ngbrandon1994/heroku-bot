@@ -22,7 +22,7 @@ module.exports = async (client, member) => {
 
   const embed = new Discord.MessageEmbed()
     .setColor(0xff0300)
-    .setAuthor(`${member.user.tag} (${member.user.id})`, `${member.user.displayAvatarURL}`)
+    .setAuthor(`${member.user.tag} (${member.user.id})`, `${member.user.displayAvatarURL()}`)
     .setTimestamp()
     .setFooter(`User Left`);
   try{
@@ -32,7 +32,7 @@ module.exports = async (client, member) => {
         color: 12589339,
         author: {
           name: `${member.user.tag} (${member.user.id})`,
-          icon_url: `${member.user.displayAvatarURL}`
+          icon_url: `${member.user.displayAvatarURL()}`
         },
         footer: {
           text: `User Left | ${client.timeNow()}`

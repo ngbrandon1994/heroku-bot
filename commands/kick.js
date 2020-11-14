@@ -14,7 +14,7 @@ exports.run = async (client, message, args, level) => {
   const embed = new Discord.MessageEmbed()
     .setColor(0x00AE86)
     .setTimestamp()
-    .setAuthor(`${message.author.username}#${message.author.discriminator}`,`${message.author.displayAvatarURL}`)
+    .setAuthor(`${message.author.username}#${message.author.discriminator}`,`${message.author.displayAvatarURL()}`)
     .addField(`User:`,user.tag, true)
     .addField(`User ID:`, user.id, true)
     .addField(`Action:`,`Kick`,true)

@@ -8,7 +8,7 @@ exports.run = async (client, message, args, level) => {
 
   var embed = new Discord.MessageEmbed()
     .setTimestamp()
-    .setAuthor(`${message.author.username}#${message.author.discriminator}`, `${message.author.displayAvatarURL}`)
+    .setAuthor(`${message.author.username}#${message.author.discriminator}`, `${message.author.displayAvatarURL()}`)
     .addField(`Castle Wars Spotlight in ${cw}`,`${client.nextCWSLDate}`)
     .addField(`Following Castle Wars Spotlight in ${client.followingCW} days`,`${client.followingCWSLDate}`);
 

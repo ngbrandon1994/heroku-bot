@@ -24,15 +24,15 @@ module.exports = async (client, member) => {
     setTimeout(function(){
       const embed = new Discord.MessageEmbed()
         .setColor(0x34f937)
-        .setAuthor(`${member.user.tag} (${member.user.id})`, `${member.user.displayAvatarURL}`)
+        .setAuthor(`${member.user.tag} (${member.user.id})`, `${member.user.displayAvatarURL()}`)
         .setTimestamp()
-        .addField("Account created At", `${client.users.find(x => x.id === member.user.id).createdAt.toString()}`)
+        .addField("Account created At", `${client.users.cache.find(x => x.id === member.user.id).createdAt.toString()}`)
         .setFooter(`User Joined`);
       memberlog.send({embed});
     },500);
   }catch(e){
     console.log(e);
     client.sendOwnerMsg(`Member Join Log message failed to send.`);
-    setTimeout(function(){memberlog.send(`${member.user.tag} (${member.user.id})\n\n Account created At: ${client.users.find(x => x.id === member.user.id).createdAt.toString()} \n\n User Joined | ${client.timeNow()}`);},500);
+    setTimeout(function(){memberlog.send(`${member.user.tag} (${member.user.id})\n\n Account created At: ${client.users.cache.find(x => x.id === member.user.id).createdAt.toString()} \n\n User Joined | ${client.timeNow()}`);},500);
   }
 };
