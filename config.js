@@ -4,7 +4,6 @@ const config = {
   "support": process.env.ownerID,
   "serverLink": process.env.serverLink,
   "botID": process.env.botID,
-  //myBotsID is an array.
   "myBotsID": process.env.myBotsID,
   "prefix": "~",
 
