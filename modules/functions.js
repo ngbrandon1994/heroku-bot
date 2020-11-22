@@ -62,7 +62,8 @@ module.exports = (client) => {
   };
 
 /**
- * Usually Sends owner msg, when encounter an error or when bot just restart (if previously used restart cmd or an error crashes)
+ * Sends the designated bot owner a message
+ * This function should be used when encounter an error or when this bot application just starts up or was restarted (index.js Line 24) 
  * We using async and await incase, bot just started up and it will take time to collect all the users in the server(s) then find the owner.
  */
   client.sendOwnerMsg = async (msg) =>{
@@ -70,8 +71,24 @@ module.exports = (client) => {
 		return owner.send(msg);
   };
 
+
+  /** 
+   * Return todays' date in the format of: Month Date Year Hour:Min 
+   * with an option to abbreviate the month if param is true
+   */ 
+  client.timeFormatted = (abbreviation = false) => {
+    const month = [`January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November`, `December`];
+    const monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+    const today = new Date();
+    if(abbreviation){
+      return `${monthShort[today.getMonth()]} ${today.getDate()} ${today.getFullYear()} `+`${today.getHours()}:${(`0`+today.getMinutes()).slice(-2)}`;
+    } else {
+      return `${month[today.getMonth()]} ${today.getDate()} ${today.getFullYear()} `+`${today.getHours()}:${(`0`+today.getMinutes()).slice(-2)}`;
+    }
+  }
+
   /**
-   * This bot is considered a back-up bot, and certain commands/event functions only run if the main bot is offline.
+   * This bot is considered a back-up bot, and certain commands/event functions only run if the main bot is offline, therefore we check if the main bot is offline or not.
    */
   client.isBotOffline = async () =>{
     const bot = await client.users.cache.get(client.config.botID);
@@ -86,7 +103,7 @@ module.exports = (client) => {
 
   /**
    * This check on a daily timed run function to see if my bots is offline
-   * As I have multiple bots I will need this function.
+   * As I have multiple bots I will need this function; otherwise the previous function is the only function necessary
    */
   client.timedCheckBotsOffline = async () =>{
     var botIDs = client.config.myBotsID;
@@ -106,7 +123,7 @@ module.exports = (client) => {
       let status = await bots.presence.status;
 
       if(status === "offline"){
-        client.sendOwnerMsg('<@'+botIDArray[i]+'>, is offline!')
+        client.sendOwnerMsg('<@'+botIDArray[i]+'> is offline!')
       }
     }
     return;
