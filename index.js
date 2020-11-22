@@ -38,12 +38,16 @@ function daily(){
 };
 
 /**
- * If you are using one bot then client.isBotOffline function is only required, you can delete timedCheckBotsOffline() function and client.config.myBotsID variable and replace line 47 with client.isBotOffline();
+ * If you are using one other bot and this bot as a backup bot:
+ * Replace line 53 with client.isBotOffline();
+ * After you can delete the function timedCheckBotsOffline() and client.config.myBotsID variable.
+ * setTimeout is used to ensure function is return X amount of time to re-check if bot(s) is offline due to their own accord
  * 3600000 is the time in milliseconds for an hr
  * times X for >1hours or divide by X to run the function in mins or secs
- * It is optimal to run it hours so you don't want to use too many of the server resources. 
- * You should not be running this function in a time frame of minutes or seconds, if your bot crashes frequently then you shouldn't be using the function below as it will be spamming the bot owner DMs
- * Recommended times are 1 hour, 4 hr, 6hr, 12hr or 30 mins (if a must)
+ * It is optimal to run it hours so you don't want to use too many of the server resources and your bot shouldn't even be crashing or go offline within every hour if it does you should take the bot offline for maintenance and resolve the issue before restarting it. 
+ * Recommended time frame for timeout is: 1, 4, 6, 12 or 24 hour
+ * Runtime is every SET hour since this bot started up.
+ * Default is every 6 hour from startup.
  */
 var botStatusCheck = function () {
   client.timedCheckBotsOffline();
