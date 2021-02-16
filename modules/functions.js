@@ -119,7 +119,6 @@ module.exports = (client) => {
 
     for(var i = 0; i<length;i++){
       let bots = await client.users.cache.get(botIDArray[i]);
-      console.log('bot id array '+botIDArray[i]);
       let status = await bots.presence.status;
 
       if(status === "offline"){

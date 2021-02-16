@@ -21,7 +21,8 @@ var runDaily = function () {
   client.timer = setTimeout(()=>{
     daily();
     //Notifies owner bot just started up/restarted
-    client.sendOwnerMsg("Bot is now online!");
+    //--- Decided to comment it out as using heroku, free dyno bot keep restarting and sending owner message.
+    //client.sendOwnerMsg("Bot is now online!");
   }, 2000);
 };
 runDaily();
@@ -38,16 +39,17 @@ function daily(){
 };
 
 /**
- * If you are using one other bot and this bot as a backup bot:
- * Replace line 53 with client.isBotOffline();
+ * If you are using one other bot and this bot as a backup bot
+ * Replace line 54 with client.isBotOffline(); and add an if statement if value returned is true then send the bot owner a msg.
  * After you can delete the function timedCheckBotsOffline() and client.config.myBotsID variable.
- * setTimeout is used to ensure function is return X amount of time to re-check if bot(s) is offline due to their own accord
- * 3600000 is the time in milliseconds for an hr
- * times X for >1hours or divide by X to run the function in mins or secs
+ * setTimeout is used to ensure function is return X amount of time since this bot application started up to re-check if other bot(s) is offline due to their own accord
+ * MY SETUP IS: 
+ * -- 3600000 is the time in milliseconds for an hr 
+ * -- times X; (ie. X is 6) where X is the time until this function rerun again upon timeout function call 
  * It is optimal to run it hours so you don't want to use too many of the server resources and your bot shouldn't even be crashing or go offline within every hour if it does you should take the bot offline for maintenance and resolve the issue before restarting it. 
  * Recommended time frame for timeout is: 1, 4, 6, 12 or 24 hour
- * Runtime is every SET hour since this bot started up.
  * Default is every 6 hour from startup.
+ * Replace *6 to *X if you want to run in a different set of hours or replace it '3600000*6' entirely.
  */
 var botStatusCheck = function () {
   client.timedCheckBotsOffline();
